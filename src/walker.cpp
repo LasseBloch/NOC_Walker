@@ -3,9 +3,10 @@
 //
 #include "walker.h"
 
-walker::walker(int screenWidth, int screenHeight) : startXPos_(screenWidth / 2), startYPos_(screenHeight / 2), screenHeight_ (screenHeight), screenWidth_(screenWidth), rnd(time(0))  {
+walker::walker(int screenWidth, int screenHeight) : startXPos_(screenWidth / 2), startYPos_(screenHeight / 2), screenHeight_ (screenHeight), screenWidth_(screenWidth), rnd_(time(0))  {
   xPos_ = startXPos_;
   yPos_ = startYPos_;
+  gen_ = std::uniform_int_distribution<int>(0,3);
   speed_ = 1;
 }
 
@@ -14,9 +15,8 @@ std::pair<int, int> walker::getPos() const {
 }
 
 bool walker::walk() {
-  std::uniform_int_distribution<int> gen(0,3);
 
-  int n = gen(rnd);
+  int n = gen_(rnd_);
   if (n == 0) {
     xPos_ -= speed_;
   }

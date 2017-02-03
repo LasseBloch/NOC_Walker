@@ -21,7 +21,8 @@ class walker {
   int xPos_;
   int yPos_;
   int speed_;
-  std::mt19937 rnd;
+  std::mt19937 rnd_;
+  std::uniform_int_distribution<int> gen_;
 };
 
 #endif //WALKER_WALKER_H

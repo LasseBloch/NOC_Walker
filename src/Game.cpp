@@ -23,10 +23,13 @@ bool Game::init() {
     window_ = SDL_CreateWindow("Walker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth_, screenHeight_, SDL_WINDOW_SHOWN);
     if (window_) {
       // Create renderer for window_
-      renderer_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
+      renderer_ = SDL_CreateRenderer(window_, -1, 0);
       if (!renderer_) {
         SDL_Log("Could not create renderer! SDL_ERROR: %s\n", SDL_GetError());
         success = false;
+      }
+      else {
+        SDL_SetRenderDrawColor(renderer_, 255, 255, 255, SDL_ALPHA_OPAQUE);
       }
     } else
     {
@@ -78,7 +81,6 @@ int Game::startLoop() {
 }
 
 void Game::drawWalkerPos(std::pair<int, int> pos) {
-  SDL_SetRenderDrawColor(renderer_, 255, 255, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderDrawPoint(renderer_, pos.first, pos.second);
   SDL_RenderPresent(renderer_);
 }
