@@ -10,7 +10,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 
 
 
-set(SOURCE_FILES main.cpp Game.cpp Game.h walker.cpp walker.h)
+set(SOURCE_FILES main.cpp src/Game.cpp src/Game.h src/walker.cpp src/walker.h)
 add_executable(Walker ${SOURCE_FILES})
 target_link_libraries(Walker ${SDL2_LIBRARY})
 

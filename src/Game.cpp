@@ -67,7 +67,6 @@ int Game::startLoop() {
       if (walker.walk()){
         drawWalkerPos(walker.getPos());
         //printf("walker pos: %d %d\n", walker.getPos().first, walker.getPos().second);
-
       }
       else {
         quit = true;
