@@ -18,9 +18,7 @@ bool walker::walk() {
 
   xPos_ += gen_(rnd_);
   yPos_ += gen_(rnd_);
+  // return false the walker walks out of bounds
+  return !((xPos_ > screenWidth_ || xPos_ < 0) || (yPos_ > screenHeight_ || yPos_ < 0));
 
-  if (xPos_ <= screenWidth_ || xPos_ <= 0 || yPos_ <= screenHeight_ || yPos_ <= 0) {
-    return true;
-  }
-  return false;
 }
